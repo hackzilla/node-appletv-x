@@ -1,9 +1,9 @@
 {
   "name": "node-appletv-x",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "A Node.js library for communicating with an Apple TV",
-  "homepage": "https://github.com/stickpin/node-appletv-x",
-  "bugs": "https://github.com/stickpin/node-appletv-x/issues",
+  "homepage": "https://github.com/hackzilla/node-appletv-x",
+  "bugs": "https://github.com/hackzilla/node-appletv-x/issues",
   "keywords": [
     "apple tv",
     "appletv",
@@ -16,9 +16,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stickpin/node-appletv-x.git"
+    "url": "https://github.com/hackzilla/node-appletv-x.git"
   },
-  "author": "Evan Coleman <e@edc.me> (https://edc.me)",
+  "author": "Daniel Platt <dan@hackzilla.org> (https://hackzilla.org/)",
   "license": "MIT",
   "dependencies": {
     "camelcase": "^5.3.1",

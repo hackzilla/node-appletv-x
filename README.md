@@ -8,6 +8,7 @@
 
 ## Disclaimer
 
+Based on the work done by [stickpin](https://github.com/stickpin/node-appletv-x).
 Original project by [@edc1591](https://twitter.com/edc1591).
 
 The code delivered AS-IS, due to lack of time I am not planning to provide any support, feel free to do with this code whatever you want. :)
@@ -31,7 +32,9 @@ This version adding following funtionality:
 
 ```bash
 # Install
-$ sudo npm install -g node-appletv-x --unsafe-perm
+$ git clone https://github.com/hackzilla/node-appletv-x
+$ cd node-appletv-x
+$ npm install -g node-appletv-x
 
 # Display built-in help
 $ appletv --help
@@ -130,6 +133,7 @@ See [homebridge-appletv-onoff-switch](https://github.com/stickpin/homebridge-app
 
 `node-appletv-x` would not have been possible without the work of these people:
 
+* [stickpin](https://github.com/stickpin/node-appletv-x) who originally created this repository.
 * [Jean Regisser](https://github.com/jeanregisser) who reversed the protobuf [spec of the MediaRemoteTV protocol](https://github.com/jeanregisser/mediaremotetv-protocol)
 * [Pierre Ståhl](https://github.com/postlund) who [implemented the protocol in Python](https://github.com/postlund/pyatv)
 * [Khaos Tian](https://github.com/KhaosT) for [reversing the HomeKit protocol](https://github.com/KhaosT/HAP-NodeJS) which also uses SRP encryption
