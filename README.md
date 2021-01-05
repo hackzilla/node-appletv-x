@@ -26,6 +26,7 @@ This version adding following funtionality:
 * IPv6 support (IPv4 has a priority)
 * Various fixes
 * Pairing information is saved in pair.json
+* Can help you guess the restriction passcode
 
 ## Usage
 
@@ -54,16 +55,10 @@ Example: `appletv --credentials '<your_pairing_token>' command tv`
 
 `messages`: Logs all raw messages from an Apple TV
 
+`guess`: Try every permuntation of passcode
+
 `help <command>`: Get help for a specific command
 
-
-### As a node module
-
-```bash
-$ npm install --save node-appletv-x
-```
-
-`node-appletv-x` makes heavy use of Promises. All functions, except for the observe functions, return Promises.
 
 ### Examples
 
