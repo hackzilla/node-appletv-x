@@ -25,6 +25,7 @@ This version adding following funtionality:
 * Support for tvOS 13.3 and newer
 * IPv6 support (IPv4 has a priority)
 * Various fixes
+* Pairing information is saved in pair.json
 
 ## Usage
 

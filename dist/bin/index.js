@@ -5,6 +5,15 @@ const appletv_1 = require("../lib/appletv");
 const credentials_1 = require("../lib/credentials");
 const scan_1 = require("./scan");
 const pair_1 = require("./pair");
+const fs = require("fs");
+
+let pairFilename = 'pair.json';
+let defaultPairHex = '';
+
+if (fs.existsSync(pairFilename)) {
+    defaultPairHex = JSON.parse(fs.readFileSync('./' + pairFilename));
+}
+
 cli
     .version('1.0.20')
     .command('pair', 'Pair with an Apple TV')
@@ -21,7 +30,10 @@ cli
         });
         return pair_1.pair(device, logger)
             .then(keys => {
-            logger.info("Credentials: " + device.credentials.toString());
+            let data = JSON.stringify({
+                data: that.deviceProof.toString('hex'),
+            });
+            fs.writeFileSync(pairFilename, data);
             process.exit();
         });
     })
@@ -37,8 +49,12 @@ cli
     .option('--credentials <credentials>', 'The device credentials from pairing', cli.STRING)
     .action((args, options, logger) => {
     if (!options.credentials) {
-        logger.error("Credentials are required. Pair first.");
-        process.exit();
+        if (!defaultPairHex) {
+            logger.error("Credentials are required. Pair first.");
+            process.exit();
+        }
+
+        options.credentials = defaultPairHex.data
     }
     let credentials = credentials_1.Credentials.parse(options.credentials);
     scan_1.scan(logger, null, credentials.uniqueIdentifier)
@@ -72,8 +88,12 @@ cli
     .option('--credentials <credentials>', 'The device credentials from pairing', cli.STRING)
     .action((args, options, logger) => {
     if (!options.credentials) {
-        logger.error("Credentials are required. Pair first.");
-        process.exit();
+        if (!defaultPairHex) {
+            logger.error("Credentials are required. Pair first.");
+            process.exit();
+        }
+
+        options.credentials = defaultPairHex.data
     }
     let credentials = credentials_1.Credentials.parse(options.credentials);
     scan_1.scan(logger, null, credentials.uniqueIdentifier)
@@ -109,8 +129,12 @@ cli
     .option('--languages', 'Include language options', cli.BOOLEAN)
     .action((args, options, logger) => {
     if (!options.credentials) {
-        logger.error("Credentials are required. Pair first.");
-        process.exit();
+        if (!defaultPairHex) {
+            logger.error("Credentials are required. Pair first.");
+            process.exit();
+        }
+
+        options.credentials = defaultPairHex.data
     }
     let credentials = credentials_1.Credentials.parse(options.credentials);
     scan_1.scan(logger, null, credentials.uniqueIdentifier)
@@ -149,8 +173,12 @@ cli
     .option('--credentials <credentials>', 'The device credentials from pairing', cli.STRING)
     .action((args, options, logger) => {
     if (!options.credentials) {
-        logger.error("Credentials are required. Pair first.");
-        process.exit();
+        if (!defaultPairHex) {
+            logger.error("Credentials are required. Pair first.");
+            process.exit();
+        }
+
+        options.credentials = defaultPairHex.data
     }
     let credentials = credentials_1.Credentials.parse(options.credentials);
     scan_1.scan(logger, null, credentials.uniqueIdentifier)
