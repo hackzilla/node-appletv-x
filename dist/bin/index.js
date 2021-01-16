@@ -31,7 +31,7 @@ cli
         return pair_1.pair(device, logger)
             .then(keys => {
             let data = JSON.stringify({
-                data: that.deviceProof.toString('hex'),
+                data: device.credentials.toString(),
             });
             fs.writeFileSync(pairFilename, data);
             process.exit();
