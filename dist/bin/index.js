@@ -207,6 +207,15 @@ cli
 cli
     .command('guess', 'Guess the restriction passcode for the Apple TV')
     .action((args, options, logger) => {
+        if (!options.credentials) {
+            if (!defaultPairHex) {
+                logger.error("Credentials are required. Pair first.");
+                process.exit();
+            }
+    
+            options.credentials = defaultPairHex.data
+        }
+        let credentials = credentials_1.Credentials.parse(options.credentials);
         scan_1.scan(null, null, credentials.uniqueIdentifier)
         .then(device => {
             device.openConnection(credentials)
