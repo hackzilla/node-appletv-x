@@ -218,9 +218,10 @@ cli
                         for (var _fourth = 0; _fourth < numbers.length; _fourth++) {
                         var code = parseInt(`${digit(numbers[_first])}${digit(numbers[_second])}${digit(numbers[_third])}${digit(numbers[_fourth])}`)
     
-                        if (code < 300) {
-                            continue;
-                        }
+                        // For example if you know the code is after 300, then this is how you skip. 
+                        // if (code < 300) {
+                        //     continue;
+                        // }
     
                         device.sendKeyPressAndRelease(0x07, numbers[_first])
                         await sleep(200);
